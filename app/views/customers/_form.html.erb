@@ -1,0 +1,11 @@
+<%= form_with(model:@customer, url: customers_c_path) do |f| %>
+<div><%= f.label :name %> <%= f.text_field :name %></div>
+<br />
+<div><%= f.label :email %> <%= f.text_field :email %></div>
+<br />
+<div><%= f.label :password %> <%= f.text_field :password %></div>
+<br />
+<div><%= f.label :address %> <%= f.text_field :address %></div>
+<br />
+<div><%= f.submit :submit %></div>
+<% end %>

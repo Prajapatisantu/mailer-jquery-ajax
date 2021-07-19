@@ -1,0 +1,22 @@
+<br />
+<div >
+  <table style="border-style: solid; margin: 30px">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Show</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+    <tbody id="productData">
+      <%= render partial: "formdata", collection: @products, as: :product%>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <%= link_to "Add Product",new_product_path, id:'addproduct', remote: true,
+  class:'btn btn-secondary btn-sm' %>
+  <br />
+</div>

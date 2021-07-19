@@ -1,0 +1,2 @@
+ajax data comes from external source  
+just checking load fuction how to works on browser
