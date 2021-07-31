@@ -3,12 +3,13 @@ test:
   root: <%= Rails.root.join("tmp/storage") %>
 
 local:
-  service: Dropbox
-  access_token: <%= Rails.application.credentials.send("development")[:DROPBOX] %>
-
-production:
-  service: Amazon
-  access_token: <%= Rails.application.credentials.send("production")[:AMAZON] %>
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+  # service: Dropbox
+  # access_token: <%= Rails.application.credentials.send("development")[:DROPBOX] %>
+# production:
+#   service: amazon
+#   access_token: <%= Rails.application.credentials.send("production")[:AMAZON] %>
 # development_dropbox:
 # dropbox:
 #   service: Dropbox

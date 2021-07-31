@@ -10,11 +10,14 @@ class UsersController < ApplicationController
   def create
     @user = User.create(users_params)
     @user.profile_image.attach(params[:user][:profile_image])
-    if @user.save
-      redirect_to users_path
-    else
-      render :new
-    end
+    respond_to do |format|
+      if @user.save
+         format.html { redirect_to users_path }
+         format.js
+      else
+         format.html { render :new }
+      end
+    end 
   end
 
   private
