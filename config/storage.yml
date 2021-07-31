@@ -5,6 +5,10 @@ test:
 local:
   service: Dropbox
   access_token: <%= Rails.application.credentials.send("development")[:DROPBOX] %>
+
+production:
+  service: Amazon
+  access_token: <%= Rails.application.credentials.send("production")[:AMAZON] %>
 # development_dropbox:
 # dropbox:
 #   service: Dropbox
