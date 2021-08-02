@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: sales_development_a
+  database: sales_development_b
   username: "postgres"
   host: "localhost"
   port: "5432"

@@ -1,10 +1,10 @@
 <%= form_with(model:@order) do |f| %>
 <div>
-   <%= f.label :payment_type, class:'form-label' %> <%= f.text_field :payment_type, class:'form-control' %>
+   <%= f.label :payment_type %> <%= f.text_field :payment_type, class:'form-control' %>
 </div>
 <br />
 <div>
-   <%= f.label :product, class:'form-check-label' %><br>
+   <%= f.label :product %><br>
    <%= collection_check_boxes(:order, :product_ids, Product.all, :id, :name,class:"form-check-input")  %>
  </div>
 <br />
