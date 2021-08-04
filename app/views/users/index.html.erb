@@ -1,17 +1,4 @@
 <br>
-<div class="container">
- <%= link_to "Create profile",new_user_path, id:'addproduct', remote: true,
-  class:'btn btn-success btn-sm' %>
-</div>
-<% @users.each do |user| %>
- <br>
- <% if user.profile_image.variable? %>
-    <%= image_tag user.profile_image.variant(resize_to_fit: [200,300]) %>
- <% end %>
- <%# <% if user.profile_image.previewable? %>
- <%#= link_to 'preview', (image_tag (user.profile_image.preview),rails_blob_path(user.profile_image, disposition: "attachment")) %>
- <%# <% end %> 
- <%#= url_for(user.profile_image) %>  
  <%= link_to 'download', rails_blob_path(user.profile_image, disposition: "attachment") %>
 <br>
 <% end %>
