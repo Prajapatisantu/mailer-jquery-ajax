@@ -1,4 +1,5 @@
 <br />
+<% if user_signed_in? %>
 <div class="container">
   <table >
     <thead>
@@ -15,8 +16,9 @@
     </tbody>
   </table>
 </div>
+<% end %>
 <div class="container">
-  <%= link_to "Add Product",new_product_path, id:'addproduct', remote: true,
+  <%#= link_to "Add Product",new_product_path, id:'addproduct', remote: true,
   class:'btn btn-secondary btn-sm' %>
   <br />
 </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users 
-  root 'orders#index'
+  root 'products#index'
   get 'customers/in', to:'customers#index'
   get 'customers/new', to:'customers#new'
   post 'customers/c', to:'customers#create'

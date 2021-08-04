@@ -1,0 +1,109 @@
+ <%#= link_to "Edit profile",edit_user_registration_path,class: ' btn btn-primary btn-sm' %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<% if user_signed_in? %>
+<div class="container">
+<div class="row flex-lg-nowrap">
+  <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+    
+  </div>
+
+  <div class="col">
+    <div class="row">
+      <div class="col mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                  <div class="mx-auto" style="width: 140px;">
+                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                      <% if current_user.user_image.attached? %>
+                        <% if current_user.user_image.variable? %>
+                            <%= image_tag current_user.user_image.variant(resize_to_fill: [140,140]) %>
+                        <% end %>
+                      <% else %>
+                            <%= image_tag("default.png", alt: "user", width: "300",height: "140") %>
+                      <% end %>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                  <div class="text-center text-sm-left mb-2 mb-sm-0">
+                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                        <%= current_user.firstname.capitalize rescue "not submitted " %>
+                        <%= current_user.lastname.capitalize rescue "not submitted " %>
+                    </h4>
+                    <div class="mt-2">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fa fa-fw fa-camera"></i>
+                        <span>Change Photo</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="text-center text-sm-right">
+                    <span class="badge badge-secondary">Administrator</span>
+                    <div class="text-muted"><small>Joined <%= current_user.created_at.strftime("%d %b %Y") %></small></div>
+                  </div>
+                </div>
+              </div>
+             
+              <div class="tab-content pt-3">
+                <div class="tab-pane active">
+                  <form class="form" novalidate="">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>First Name</label>
+                              <input class="form-control" type="text" name="name" placeholder="John Smith" value="<%= current_user.firstname.capitalize rescue ""%>">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Last Name</label>
+                              <input class="form-control" type="text" name="username" placeholder="johnny.s" value="<%= current_user.lastname.capitalize rescue ""%>">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control" type="text"  value="<%= current_user.email.capitalize rescue ""%>">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col mb-3">
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      
+                    
+                    <div class="row">
+                      <div class="col d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<% end %>
+
+
+

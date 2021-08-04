@@ -7,10 +7,27 @@
     <div class="form-icon">
       <span><i class="icon icon-user"></i></span>
     </div>
+
+     <div class="form-group">
+      <%= f.label :Profile_image %><br>
+      <%= f.file_field :user_image, autofocus: true, class:'form-control item' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :firstname %><br>
+      <%= f.text_field :firstname, autofocus: true, class:'form-control item', autocomplete: "firstname",placeholder: 'Firstname' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :lastname %><br>
+      <%= f.text_field :lastname, autofocus: true, class:'form-control item', autocomplete: "lastname",placeholder: 'lastname' %>
+    </div>
+
     <div class="form-group">
       <%= f.label :Email %><br>
       <%= f.email_field :email, autofocus: true, class:'form-control item', autocomplete: "email",placeholder: 'Email Address' %>
     </div>
+
     <div class="form-group">
        <%= f.label :password %>
        <% if @minimum_password_length %>

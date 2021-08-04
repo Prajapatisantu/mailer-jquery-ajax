@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "bootstrap";
 import "../stylesheets/application";
+import "packs/order_index";
 
 Rails.start();
 Turbolinks.start();

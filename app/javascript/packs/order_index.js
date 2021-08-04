@@ -4,7 +4,11 @@
 // });
 
 $(document).ready(function () {
-  $("#load_data").click(function () {
-    $("#fun").load("sample.txt");
+  $("#unauthuser_product").click(function () {
+    alert("Sign up required")
   });
+  $("#unauthuser_order").click(function () {
+    alert("Please Sign up")
+  });
+
 });
