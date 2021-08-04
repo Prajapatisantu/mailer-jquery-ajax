@@ -1,10 +1,9 @@
  <%#= link_to "Edit profile",edit_user_registration_path,class: ' btn btn-primary btn-sm' %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <% if user_signed_in? %>
-<div class="container">
+<div class="container user-profile">
 <div class="row flex-lg-nowrap">
-  <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-    
+  <div class="col-12 col-lg-auto mb-3" style="width: 200px;">  
   </div>
 
   <div class="col">
@@ -104,6 +103,8 @@
 </div>
 </div>
 <% end %>
+
+<%#= stylesheet_pack_tag 'stylesheets/userprofile' %>
 
 
 

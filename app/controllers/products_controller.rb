@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.limit(14)
   end
 
   def new
@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        ProductMailer.product_added_confirmation.deliver_now
+        # ProductMailer.product_added_confirmation.deliver_now
         format.html { redirect_to products_path }
-        format.js
+        format.js {redirect_to root_path}
       else
         format.html { render :new }
       end
@@ -47,6 +47,6 @@ class ProductsController < ApplicationController
   private
 
   def prod
-    params.require(:product).permit(:name, :price, :category_id, order_ids: [])
+    params.require(:product).permit(:name, :price,:product_image, :category_id, order_ids: [])
   end
 end

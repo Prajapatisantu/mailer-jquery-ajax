@@ -1,24 +1,39 @@
-<br />
-<% if user_signed_in? %>
-<div class="container">
-  <table >
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Show</th>
-        <th>Destroy</th>
-      </tr>
-    </thead>
-    <tbody id="productData">
-      <%= render partial: "formdata", collection: @products, as: :product%>
-    </tbody>
-  </table>
-</div>
-<% end %>
-<div class="container">
-  <%#= link_to "Add Product",new_product_path, id:'addproduct', remote: true,
-  class:'btn btn-secondary btn-sm' %>
-  <br />
+<br>
+  <tbody id="productData">
+      <% render partial: "formdata", collection: @products, as: :product%>
+  </tbody>  
+
+<div class="container d-flex justify-content-center mt-50 mb-50 product-card">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                  <div class="card-img-actions"> 
+                    <% if product.product_image.attached? %>
+                        <% if product.product_image.variable? %>
+                             <%= image_tag product.product_image, class:'card-img img-fluid' %>
+                        <% end %>
+                    <% else %>
+                             <%= image_tag("default.png", alt: "user", width: "96",height: "96") %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card-body bg-light text-center">
+                    <div class="mb-2">
+                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><%= product.name %></a> </h6> 
+                    </div>
+                        <h3 class="mb-0 font-weight-semibold">$<%= product.price %></h3>
+                    <div> 
+                        <i class="fa fa-star star"></i> 
+                        <i class="fa fa-star star"></i> 
+                        <i class="fa fa-star star"></i> 
+                        <i class="fa fa-star star"></i> 
+                    </div>
+                    <button type="button" class="btn bg-cart"></i>Buy now</button>
+                </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
 </div>

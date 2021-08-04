@@ -6,27 +6,32 @@
 <%end%>
 </div>
 <br>
-<%= form_with(model:@product, local: false) do |f| %>
-  <div>
-   <%= f.label :name %>
-   <%= f.text_field :name, class:'form-control' %>
-  </div>
-  <br />
-  <div> 
-     <%= f.label :price %> 
-     <%= f.text_field :price,class:'form-control' %>
-  </div>
-  <br />
-  <div>
-     <%= f.label :category_id %><br>
-     <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control' %>
-  </div>
-  <br />  
-  <div>
-     <%= f.label :order,"delivery_type" %><br>
-     <%= collection_check_boxes(:product, :order_ids, Order.all, :id, :payment_type) %>
-  </div> 
-  <br>
-    <%= f.submit :submit,class:'btn btn-success' %>
+<%= form_with(model:@product, local: false, class: 'product-form') do |f| %>
+      <div>
+           <%= f.label :Product_image %>
+           <%= f.file_field :product_image, autofocus: true, class:'form-control' %>
+      </div>
+      <br>
+      <div>
+           <%= f.label :name %>
+           <%= f.text_field :name, class:'form-control' %>
+      </div>
+      <br />
+      <div> 
+           <%= f.label :price %> 
+           <%= f.text_field :price,class:'form-control' %>
+      </div>
+      <br />
+      <div>
+           <%= f.label :category_id %><br>
+           <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control' %>
+      </div>
+      <br />  
+      <div>
+           <%= f.label :order,"delivery_type" %><br>
+           <%= collection_check_boxes(:product, :order_ids, Order.all, :id, :payment_type) %>
+      </div> 
+      <br>
+          <%= f.submit :submit,class:'btn btn-success' %>
 <% end %>
 

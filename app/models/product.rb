@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :name, presence: {message: "please enter"}
   has_and_belongs_to_many :orders
   # after_create :simple
+  has_one_attached :product_image
 
   private
 

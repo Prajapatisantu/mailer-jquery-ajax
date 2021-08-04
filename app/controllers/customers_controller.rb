@@ -3,7 +3,6 @@ class CustomersController < ApplicationController
     @customers = Customer.all
     p 11111111111
     p customers_c_path
-
     p customers_c_url
     p 11111111111
 

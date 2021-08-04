@@ -12,142 +12,54 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- navbar setup -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
   <div class="container-fluid">
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
       <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img
-          src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"
-          height="15"
-          alt=""
-          loading="lazy"
-        />
-      </a>
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Home",root_path,class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to "Product",new_product_path,remote: true,class: 'nav-link' %>
-        <% else %>
-          <%# alert("please sign up to check"); %>
-          <%= link_to "Product",new_user_registration_path, id: 'unauthuser_product',class: 'nav-link' %>
-        <% end %>
-        </li>
-        <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to "Order",new_order_path,remote: true,class: 'nav-link' %>
-        <% else %>
-          <%= link_to "Order",new_user_registration_path,id:'unauthuser_order',class: 'nav-link' %>
-        <% end %>
-        </li>
-      </ul>
-      <!-- Left links -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="15" alt="" loading="lazy"/></a>
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+             <%= link_to "Product",root_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+             <% if user_signed_in? %> 
+               <%= link_to "Add product",new_product_path,remote: true,class: 'nav-link' %>
+             <% end %> 
+          </li>
+          <li class="nav-item">
+             <% if user_signed_in? %>
+               <%= link_to " Add order",new_order_path,remote: true,class: 'nav-link' %>
+             <% end %> 
+          </li>
+       </ul>
     </div>
-    <!-- Collapsible wrapper -->
-
     <!-- Right elements -->
     <div class="d-flex align-items-center">
-      
-        
-     
       <!-- Avatar -->
-    <% if user_signed_in? %>
-     <div class="dropdown">
-       <a
-        class="dropdown-toggle d-flex align-items-center hidden-arrow"
-        href="#"
-        id="navbarDropdownMenuLink"
-        role="button"
-        data-bs-toggle="dropdown" 
-        aria-expanded="false"
-      >
-        <%# <img
-          src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-          class="rounded-circle"
-          height="25"
-          alt=""
-          dat
-          loading="lazy"
-        /> %>
-      <% if current_user.user_image.attached? %>
-        <% if current_user.user_image.variable? %>
-             <%= image_tag current_user.user_image.variant(resize_to_fill: [30,30]), class:'rounded-circle' %>
-        <% end %>
-      <% else %>
-       <%= image_tag("default.png", alt: "user", width: "30") %>
-      <% end %>
-      </a>
-
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-            <li><%= link_to "View profile",user_path(current_user),class: 'dropdown-item' %></li>
-            <li><%= link_to "Edit profile",edit_user_registration_path,class: 'dropdown-item' %></li>
-            <li><%= link_to "Logout",destroy_user_session_path,method: :delete, class: 'dropdown-item' %></li>
-        </ul>
-     </div>
-    <% else %>
-            <%= link_to "Sign up",new_user_registration_path,class: 'nav-link' %>
-            <%= link_to "Sign In",new_user_session_path,class: 'nav-link' %>
-    <% end %>
+       <% if user_signed_in? %>
+         <div class="dropdown">
+            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <% if current_user.user_image.attached? %>
+                  <% if current_user.user_image.variable? %>
+                      <%= image_tag current_user.user_image.variant(resize_to_fill: [30,30]), class:'rounded-circle' %>
+                  <% end %>
+               <% else %>
+                      <%= image_tag("default.png", alt: "user", width: "30") %>
+               <% end %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <li><%= link_to "View profile",user_path(current_user),class: 'dropdown-item' %></li>
+                <li><%= link_to "Edit profile",edit_user_registration_path,class: 'dropdown-item' %></li>
+                <li><%= link_to "Logout",destroy_user_session_path,method: :delete, class: 'dropdown-item' %></li>
+            </ul>
+        </div>
+       <% else %>
+              <%= link_to "Sign up",new_user_registration_path,class: 'nav-link' %>
+              <%= link_to "Sign In",new_user_session_path,class: 'nav-link' %>
+       <% end %>
     </div>
-    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
