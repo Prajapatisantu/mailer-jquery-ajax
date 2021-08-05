@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'activestorage-dropbox'
 gem 'devise'
 gem "bulma-rails", "~> 0.9.1"
+gem 'pagy', '~> 4.10'
 #gem 'dropbox_api'
 gem 'image_processing'
 group :development, :test do

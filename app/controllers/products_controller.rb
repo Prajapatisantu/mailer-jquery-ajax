@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.limit(14)
+    # @products = Product.all.limit(14)
+    @pagy, @products = pagy(Product.all)
   end
 
   def new
