@@ -1,19 +1,29 @@
-<%= form_with(model:@order) do |f| %>
-<div>
-   <%= f.label :payment_type %> <%= f.text_field :payment_type, class:'form-control' %>
+<div class="registration-form">
+   <%= form_with(model:@order) do |f| %>
+     <h5><center>Address details</center></h5>
+     <div class="form-group">
+         <strong><%= f.label :payment_type %></strong>
+         <%= f.text_field :payment_type, class:'form-control' ,value: 'cash on delivery' %>
+     </div>
+     <br />
+     <div class="form-group">
+         <strong><%= f.label :Address %></strong> 
+         <%= f.text_area :address, class:'form-control' %>
+     </div>
+     <br>
+     <div>
+         <%= f.submit :submit,class:'btn btn-success' %>
+     </div>
+   <% end %>
 </div>
-<br />
-<div>
-   <%= f.label :product %><br>
-   <%= collection_check_boxes(:order, :product_ids, Product.all, :id, :name,class:"form-check-input")  %>
- </div>
-<br />
-<div>
-   <%= f.submit :submit,class:'btn btn-success' %>
-</div>
-<% end %>
 
 
 
 
  
+
+
+ <%# <div>
+   <%= f.label :product %>
+   <%#= collection_check_boxes(:order, :product_ids, Product.all, :id, :name,class:"form-check-input")  %>
+<%# </div> %>
