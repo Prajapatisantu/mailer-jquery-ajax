@@ -1,19 +1,28 @@
 <div class="registration-form">
    <%= form_with(model:@order) do |f| %>
      <h5><center>Address details</center></h5>
+     <%= f.hidden_field :product_id, value: @product.id %> 
      <div class="form-group">
-         <strong><%= f.label :payment_type %></strong>
-         <%= f.text_field :payment_type, class:'form-control' ,value: 'cash on delivery' %>
-     </div>
-     <br />
+         <strong><%= f.label :product_name %></strong> 
+         <%= f.text_field :name, class:'form-control' ,value: @product.name, disabled: true if current_user.user? %>
+     <div>
+     <br>
      <div class="form-group">
          <strong><%= f.label :Address %></strong> 
          <%= f.text_area :address, class:'form-control' %>
      </div>
      <br>
+     <div class="form-group">
+         <strong><%= f.label :price %></strong> 
+         <%= f.text_field :price, class:'form-control' ,value: '$'+@product.price.to_s, disabled: true if current_user.user? %>
      <div>
-         <%= f.submit :submit,class:'btn btn-success' %>
+     <br>
+     <div class="form-group">
+         <strong><%= f.label :payment_type %></strong>
+         <%= f.text_field :payment_type, class:'form-control' ,value: 'cash on delivery', readonly: true %>
      </div>
+     <br>
+         <%= f.submit :submit,class:'btn btn-success' %>
    <% end %>
 </div>
 
@@ -23,7 +32,4 @@
  
 
 
- <%# <div>
-   <%= f.label :product %>
-   <%#= collection_check_boxes(:order, :product_ids, Product.all, :id, :name,class:"form-check-input")  %>
-<%# </div> %>
+ 

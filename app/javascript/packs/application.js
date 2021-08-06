@@ -15,4 +15,5 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 require("jquery");
+global.toastr = require("toastr");
 console.log("jquery available");

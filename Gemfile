@@ -15,6 +15,7 @@ gem 'activestorage-dropbox'
 gem 'devise'
 gem "bulma-rails", "~> 0.9.1"
 gem 'pagy', '~> 4.10'
+gem 'sidekiq', '~> 6.1.3'
 #gem 'dropbox_api'
 gem 'image_processing'
 group :development, :test do

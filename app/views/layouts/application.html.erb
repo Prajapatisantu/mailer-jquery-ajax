@@ -14,5 +14,26 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= yield %>
+
+     <% if flash.any? %>
+        <script type="text/javascript">
+          <% flash.each do |f| %>
+            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success').gsub('info','info').gsub('warning','warning') %>
+            toastr['<%= type %>']('<%= f[1] %>', '', {
+                 "closeButton": false,
+                 "positionClass": "toast-top-center", 
+                 "onclick": null, 
+                 "showDuration": "300", 
+                 "hideDuration": "1000", 
+                 "timeOut": "3000", 
+                 "extendedTimeOut": "1000", 
+                 "showEasing": "swing", 
+                 "hideEasing": "linear", 
+                 "showMethod": "fadeIn", 
+                 "progressBar": true,
+                 "hideMethod": "fadeOut" });
+          <% end %>
+        </script>
+     <% end %>
   </body>
 </html>

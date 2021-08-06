@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
       if @product.save
         # ProductMailer.product_added_confirmation.deliver_now
         format.html { redirect_to products_path }
-        format.js {redirect_to root_path}
+        format.js {redirect_to root_path }
       else
         format.html { render :new }
       end
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+     @product = Product.find(params[:id])
   end
 
   def destroy

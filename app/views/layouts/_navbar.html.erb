@@ -51,9 +51,15 @@
                <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                <li><%= link_to "View profile",user_path(current_user),class: 'dropdown-item' %></li>
-                <li><%= link_to "Edit profile",edit_user_registration_path,class: 'dropdown-item' %></li>
-                <li><%= link_to "Logout",destroy_user_session_path,method: :delete, class: 'dropdown-item' %></li>
+               <% if user_signed_in? && current_user.role == "user" %>      
+                 <li><%= link_to "My order",product_path(current_user),class: 'dropdown-item' %></li>
+               <% end %> 
+               <% if user_signed_in? && current_user.role == "admin" %>      
+                 <li><%= link_to "View orders", orders_path, class: 'dropdown-item' %></li>
+               <% end %>
+                 <li><%= link_to "View profile",user_path(current_user),class: 'dropdown-item' %></li>
+                 <li><%= link_to "Edit profile",edit_user_registration_path,class: 'dropdown-item' %></li>
+                 <li><%= link_to "Logout",destroy_user_session_path,method: :delete, class: 'dropdown-item' %></li>
             </ul>
         </div>
        <% else %>

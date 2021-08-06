@@ -4,11 +4,7 @@
 // });
 
 $(document).ready(function () {
-  $("#unauthuser_product").click(function () {
-    alert("Sign up required")
+  $("#unauthuser").click(function () {
+    alert("Please sign up!")
   });
-  $("#unauthuser_order").click(function () {
-    alert("Please Sign up")
-  });
-
 });

@@ -1,8 +1,31 @@
-<br>
-<div>
-<strong>Product Name: <%= @product.name %></strong><br>
-<strong>Product price: <%= @product.price %></strong><br>
-<%= link_to "Back",products_path %>
-<%= link_to "Edit",edit_product_path %>
-
+<% current_user.orders.each do |order| %>
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+            <div class="row p-2 bg-white border rounded">
+                <div class="col-md-3 mt-1">
+                    <% if order.product.product_image.attached? %>
+                        <% if order.product.product_image.variable? %>
+                             <%= image_tag order.product.product_image, class:'img-fluid img-responsive rounded product-image' %>
+                        <% end %>
+                    <% else %>
+                        <%= image_tag("default.png", alt: "user", class:'img-fluid img-responsive rounded product-image') %>
+                    <% end %>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <h5><%= @product.name %></h5>
+                    <div class="d-flex flex-row">
+                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                    </div>
+                     <p class="text-justify text-truncate para mb-0"><strong>Order reference ID: </strong><%= order.order_ref %></p>
+                     <p class="text-justify text-truncate para mb-0"><strong>Address of delivery: </strong><%= order.address %></p>
+                     <p class="text-justify text-truncate para mb-0"><strong>Payment method: </strong><%= order.payment_type %></p>
+                     <p class="text-justify text-truncate para mb-0"><strong>Total price: </strong><%= @product.price %></p>
+                     <p class="text-justify text-truncate para mb-0"><strong>Order date: </strong><%= order.created_at.strftime("%d %b %Y") %></p>
+                </div>
+        
+            </div>
+        </div>
+    </div>
 </div>
+<% end %>

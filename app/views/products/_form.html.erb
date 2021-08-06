@@ -27,11 +27,15 @@
            <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control' %>
       </div>
       <br />  
-      <div>
-           <%= f.label :order,"delivery_type" %><br>
-           <%= collection_check_boxes(:product, :order_ids, Order.all, :id, :payment_type) %>
-      </div> 
-      <br>
           <%= f.submit :submit,class:'btn btn-success' %>
 <% end %>
 
+
+
+
+
+
+
+
+
+     
