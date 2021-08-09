@@ -5,7 +5,8 @@ class AdminMailer < ApplicationMailer
   #
   #   en.admin_mailer.product_order_information.subject
   #
-  def product_order_information
+  def product_order_information(order)
+    @order_information = order
     mail(to: "prajapatisantu5765@gmail.com", subject: "Product order information") do |format|
        format.html{ render "product_order_information"}
     end

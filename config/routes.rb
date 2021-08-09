@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'customers/in', to:'customers#index'
   get 'customers/new', to:'customers#new'
   post 'customers/c', to:'customers#create'
+  get '/search', to:'products#search'
   # root 'orders#index'
   resources :products
   resources :orders

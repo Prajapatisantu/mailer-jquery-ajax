@@ -1,0 +1,36 @@
+<h3>Search Result</h3>  
+<% @results.each do |result| %>
+<div class="mainsearch">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <ul class="list-group shadow">
+                <li class="list-group-item">
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3" style="width:100%; display:flex;">
+                        <div class="media-body order-2 order-lg-1" style="width:80%;">
+                            <h5 class="mt-0 font-weight-bold mb-2"><strong><%= result.name.capitalize %></strong></h5>
+                            <p class="font-italic text-muted mb-0 small" style="width:51%;"><strong> In stock: <%= rand(1..1000) %></strong></p>
+                            <div class="d-flex align-items-center justify-content-between mt-1" style="width:80%;">
+                                <h5 class="font-weight-bold my-2">₹<%= result.price %></h5>
+                                <ul class="list-inline small">
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                         <% if result.product_image.attached? %>
+                            <% if result.product_image.variable? %>
+                               <%= image_tag result.product_image, class:'ml-lg-5 order-1 order-lg-2', style: "width:30%;" %>
+                            <% end %>
+                         <% else %>
+                            <%= image_tag("default.png", alt: "user",class:'ml-lg-5 order-1 order-lg-2', width: "30%;") %>
+                         <% end %>
+                    </div> 
+                </li> 
+            </ul>
+        </div>
+    </div>
+</div>
+<% end %>

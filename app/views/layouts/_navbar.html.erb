@@ -6,8 +6,7 @@
             <button type="button" class="close btn btn-secondary btn-sm" data-bs-dismiss="modal">close</button>  
         </div>
         <div class="modal-body">
-        </div>
-        
+        </div>   
     </div>
   </div>
 </div>
@@ -33,6 +32,9 @@
              <% if user_signed_in? %>
                <%#= link_to " Add order",new_order_path,remote: true,class: 'nav-link' %>
              <% end %> 
+          </li>
+          <li class="nav-item">
+             <%= render 'products/search' %>
           </li>
        </ul>
     </div>

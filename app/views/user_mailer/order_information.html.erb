@@ -1,5 +1,23 @@
 <h1>Order placed successfully</h1>
 
-<p>
-   find me in app/views/user_mailer/order_information.html.erb
-</p>
+<h5><%= @order_information.product.name %></h5>
+   <p>
+      <strong>Order reference ID: </strong>
+      <span><%= @order_information.order_ref %></span>
+   </p>
+   <p>
+      <strong>Product price: </strong>
+      <span><%= @order_information.product.price %></span>
+   </p>
+   <p>
+      <strong>payment type: </strong>
+      <span><%= @order_information.payment_type %></span>
+   </p>
+   <p>
+      <strong>Order date: </strong>
+      <span><%= @order_information.created_at.strftime("%d %b %Y") %></span>
+   </p>
+  
+
+
+

@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.create(order_params)
     if @order.save
       redirect_to root_path
+      PostemailJob.perform_later(@order)
       flash[:success] = "Order placed successfully"
     else
       render :new

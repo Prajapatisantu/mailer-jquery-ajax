@@ -1,5 +1,25 @@
 <h1>Product order information</h1>
 
-<p>
-   find me in app/views/admin_mailer/product_order_information.html.erb
-</p>
+
+<h5><%= @order_information.product.name %></h5>
+   <p>
+      <strong>Customer name: </strong>
+      <span><%= @order_information.user.firstname.capitalize+''+@order_information.user.lastname.capitalize %></span>
+   </p>
+   <p>
+      <strong>Order reference ID: </strong>
+      <span><%= @order_information.order_ref %></span>
+   </p>
+   <p>
+      <strong>Product price: </strong>
+      <span><%= @order_information.product.price %></span>
+   </p>
+   <p>
+      <strong>payment type: </strong>
+      <span><%= @order_information.payment_type %></span>
+   </p>
+   <p>
+      <strong>Order date: </strong>
+      <span><%= @order_information.created_at.strftime("%d %b %Y") %></span>
+   </p>
+  

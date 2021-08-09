@@ -8,12 +8,21 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def search
+    if params[:search].blank?
+      redirect_to root_path
+      flash[:alert] = "Enter something"
+    else
+      @search_tag = params[:search].downcase
+      @results = Product.all.where("lower(name) LIKE :search", search: @search_tag)
+    end
+  end
+
   def create
     @product = Product.create!(prod)
 
     respond_to do |format|
       if @product.save
-        # ProductMailer.product_added_confirmation.deliver_now
         format.html { redirect_to products_path }
         format.js {redirect_to root_path }
       else
