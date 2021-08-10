@@ -31,7 +31,9 @@
                         <i class="fa fa-star star"></i> 
                     </div>
                     <% if user_signed_in? && current_user.role == "admin" %> 
-
+                      <% if product.product_csv.attached? %>
+                        <%= link_to "View csv", rails_blob_path(product.product_csv, disposition: "attachment"), class: 'btn bg-cart' %>
+                      <% end %>
                     <% elsif user_signed_in? && current_user.role == "user"%>  
                         <%= link_to "Buy now",new_order_path(product_id: product.id), class: 'btn bg-cart' %>
                         <%#= link_to "View order",product_path(product), class: 'btn btn-success btn-sm' %>
