@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   def index
     # @products = Product.all.limit(14)
     @pagy, @products = pagy(Product.all)
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def search
+    
     if params[:search].blank?
       redirect_to root_path
       flash[:alert] = "Enter something"
