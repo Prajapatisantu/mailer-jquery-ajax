@@ -5,6 +5,7 @@ test:
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
+
   # service: Dropbox
   # access_token: <%= Rails.application.credentials.send("development")[:DROPBOX] %>
 # production:

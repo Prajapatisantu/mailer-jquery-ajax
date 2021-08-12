@@ -1,14 +1,14 @@
 
- <div class="registration-form">
+<div class="registration-form">
 <%# <h5 class="text-center mb-4">Signup Form</h5> %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name),class:'form-card') do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),class:'form-card') do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
     <div class="form-icon">
       <span><i class="icon icon-user"></i></span>
     </div>
 
-     <div class="form-group">
+    <div class="form-group">
       <%= f.label :Profile_image %><br>
       <%= f.file_field :user_image, autofocus: true, class:'form-control item' %>
     </div>
@@ -29,32 +29,31 @@
     </div>
 
     <div class="form-group">
-       <%= f.label :password %>
-       <% if @minimum_password_length %>
-       <% end %>
-       <%= f.password_field :password,class:'form-control item', autocomplete: "new-password",placeholder: 'Password (min 6 character)' %>
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <% end %>
+      <%= f.password_field :password,class:'form-control item', autocomplete: "new-password",placeholder: 'Password (min 6 character)' %>
     </div>
 
     <div class="form-group">
-       <%= f.label :confirm_password %><br />
-       <%= f.password_field :password_confirmation, class:'form-control item', autocomplete: "new-password",placeholder:'Confirm password' %>
+      <%= f.label :confirm_password %><br />
+      <%= f.password_field :password_confirmation, class:'form-control item', autocomplete: "new-password",placeholder:'Confirm password' %>
     </div>
 
-   <div class="form-group">
-    <%= f.submit "Create Account",class:"btn btn-block create-account" %>
-  </div>
-  <div class="form-group">
+    <div class="form-group">
+      <%= f.submit "Create Account",class:"btn btn-block create-account" %>
+    </div>
+    <div class="form-group">
       <%= render "users/shared/links" %>
+    </div>
+  <% end %>
+  <div class="social-media">
+    <h5>Sign up with social media</h5>
+      <div class="social-icons">
+        <%= link_to '<i class="fa fa-facebook" title="Facebook"></i>'.html_safe, user_facebook_omniauth_authorize_path, method: :post %>
+        <%= link_to '<i class="fa fa-google" title="Google"></i>'.html_safe, user_google_oauth2_omniauth_authorize_path, method: :post %>
+        <%= link_to '<i class="fa fa-twitter" title="Twitter"></i>'.html_safe,  user_twitter_omniauth_authorize_path, method: :post %>
+      </div>
   </div>
-
-<% end %>
-        <div class="social-media">
-            <h5>Sign up with social media</h5>
-            <div class="social-icons">
-                <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
-                <a href="#"><i class="fa fa-google" title="Google"></i></a>
-                <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
-            </div>
-        </div>
 </div>
 
