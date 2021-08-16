@@ -10,10 +10,12 @@ import "channels";
 import "bootstrap";
 import "../stylesheets/application";
 import "packs/order_index";
+import "packs/search";
 
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 require("jquery");
+require("easy-autocomplete");
 global.toastr = require("toastr");
 console.log("jquery available");

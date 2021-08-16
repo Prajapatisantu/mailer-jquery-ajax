@@ -2,57 +2,57 @@
   <tbody id="productData">
       <% render partial: "formdata", collection: @products, as: :product%>
   </tbody>  
-
-<div class="container d-flex justify-content-center mt-50 mb-50 product-card">
-    <div class="row">
-      <% @products.each do |product| %>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <div class="card-body">
-                  <div class="card-img-actions"> 
-                    <% if product.product_image.attached? %>
-                        <% if product.product_image.variable? %>
-                             <%= image_tag product.product_image, class:'card-img img-fluid' %>
-                        <% end %>
-                    <% else %>
-                             <%= image_tag("default.png", alt: "user", width: "96",height: "96") %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><%= product.name %></a> </h6> 
-                    </div>
-                        <h3 class="mb-0 font-weight-semibold">$<%= product.price %></h3>
-                    <div> 
-                        <i class="fa fa-star star"></i> 
-                        <i class="fa fa-star star"></i> 
-                        <i class="fa fa-star star"></i> 
-                        <i class="fa fa-star star"></i> 
-                    </div>
-                    <% if user_signed_in? && current_user.admin? %> 
-                      <% if product.product_csv.attached? %>
-                         <%= link_to "View csv", rails_blob_path(product.product_csv, disposition: "attachment"), class: 'btn bg-cart' %>
+<div id="index">
+  <div class="container d-flex justify-content-center mt-50 mb-50 product-card">
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-md-4 mt-2">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="card-img-actions"> 
+                      <% if product.product_image.attached? %>
+                          <% if product.product_image.variable? %>
+                              <%= image_tag product.product_image, class:'card-img img-fluid' %>
+                          <% end %>
+                      <% else %>
+                              <%= image_tag("default.png", alt: "user", width: "96",height: "96") %>
                       <% end %>
-                    <% elsif user_signed_in? && current_user.user? %>
-                        <%= link_to "Buy now",new_order_path(product_id: product.id), class: 'btn bg-cart' %>
-                    <% else %>    
-                        <%= link_to "Buy now",new_user_registration_path, id: 'unauthuser', class: 'btn bg-cart' %>
-                    <% end %> 
-                </div>
-            </div>
-        </div>
-      <% end %>             
-    </div>
+                    </div>
+                  </div>
+                  <div class="card-body bg-light text-center">
+                      <div class="mb-2">
+                          <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><%= product.name %></a> </h6> 
+                      </div>
+                          <h3 class="mb-0 font-weight-semibold">$<%= product.price %></h3>
+                      <div> 
+                          <i class="fa fa-star star"></i> 
+                          <i class="fa fa-star star"></i> 
+                          <i class="fa fa-star star"></i> 
+                          <i class="fa fa-star star"></i> 
+                      </div>
+                      <% if user_signed_in? && current_user.admin? %> 
+                        <% if product.product_csv.attached? %>
+                          <%= link_to "View csv", rails_blob_path(product.product_csv, disposition: "attachment"), class: 'btn bg-cart' %>
+                        <% end %>
+                      <% elsif user_signed_in? && current_user.user? %>
+                          <%= link_to "Buy now",new_order_path(product_id: product.id), class: 'btn bg-cart' %>
+                      <% else %>    
+                          <%= link_to "Buy now",new_user_registration_path, id: 'unauthuser', class: 'btn bg-cart' %>
+                      <% end %> 
+                  </div>
+              </div>
+          </div>
+        <% end %>             
+      </div>
+  </div>
+  <div class="text-center">
+      <ul class="pagination justify-content-center">
+        <%== pagy_bootstrap_nav(@pagy) %>    
+      </ul>
+  </div>
 </div>
-
-<div class="text-center">
-    <ul class="pagination justify-content-center">
-       <%== pagy_bootstrap_nav(@pagy) %>    
-    </ul>
+<div id="searchResult">
 </div>
-
-
 
 
 

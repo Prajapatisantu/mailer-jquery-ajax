@@ -1,7 +1,7 @@
-<%= form_tag(search_path, method: :get) do %>  
+<%= form_tag(search_path, method: :get, remote: true) do %>  
   <div class="input-group">  
     <div class="form-outline">
-      <%= search_field_tag :search, params[:search], placeholder: "Search product", class: "form-control" %>  
+      <%= search_field_tag :search, params[:search], id: 'productsearch', data: { behavior: "autocomplete", remote:true}, placeholder: "Search product", class: "form-control" %>  
     </div>
       <%= button_tag '<i class="fa fa-search"></i>'.html_safe, class: 'btn btn-warning',name: nil %>
   </div>  
