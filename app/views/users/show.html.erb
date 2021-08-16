@@ -33,10 +33,10 @@
                         <%= current_user.lastname.capitalize rescue "not submitted " %>
                     </h4>
                     <div class="mt-2">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fa fa-fw fa-camera"></i>
-                        <span>Change Photo</span>
-                      </button>
+                      <%= form_for User.new do |f| %>
+                        <%= f.file_field :user_image, class: 'btn btn-primary btn-sm',id: 'img',style:"display:none;" %>
+                        <label for="img" class="btn btn-primary"><i class="fa fa-fw fa-camera"></i> Change photo</label>
+                      <% end %>
                     </div>
                   </div>
                   <div class="text-center text-sm-right">

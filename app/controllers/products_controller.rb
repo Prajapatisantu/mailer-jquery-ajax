@@ -10,18 +10,17 @@ class ProductsController < ApplicationController
   end
 
   def search
-    if params[:search].blank?
-      redirect_to root_path
-      flash[:alert] = "Enter something"
-    else
-      @search_tag = params[:search].downcase
-      @results = Product.all.where("lower(name) LIKE :search", search: @search_tag)
+    @products = Product.all
+    @search_tag = params[:search].downcase
+    @results = Product.all.where("lower(name) LIKE :search", search: @search_tag)
+    respond_to do |format|
+      format.json
+      format.js
     end
   end
 
   def create
     @product = Product.create!(prod)
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_path }
