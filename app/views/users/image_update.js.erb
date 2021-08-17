@@ -1,0 +1,2 @@
+$("#userimage").attr("src", "http://localhost:3000<%= url_for(current_user.user_image.variant(resize_to_fill: [140,140])) %>");
+$("#navuserImage").attr("src", "http://localhost:3000<%= url_for(current_user.user_image.variant(resize_to_fill: [30,30])) %>");

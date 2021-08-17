@@ -19,13 +19,24 @@ class UsersController < ApplicationController
       end
     end 
   end
-   
+  
+  def image_update
+    @user = User.find(current_user.id)
+    respond_to do |format|
+      if @user.update(users_params)
+         format.html { redirect_to @user }
+         format.js 
+      end
+    end
+  end
+
   def show 
+    @user = User.find(params[:id])
   end
 
   private
 
   def users_params
-    params.require(:user).permit(:name,:profile_image)
+    params.require(:user).permit(:user_image)
   end
 end

@@ -18,7 +18,9 @@
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                       <% if current_user.user_image.attached? %>
                         <% if current_user.user_image.variable? %>
-                            <%= image_tag current_user.user_image.variant(resize_to_fill: [140,140]) %>
+                            <div id="image">
+                              <%= image_tag current_user.user_image.variant(resize_to_fill: [140,140]),id: 'userimage' %>
+                            </div>
                         <% end %>
                       <% else %>
                             <%= image_tag("default.png", alt: "user", width: "300",height: "140") %>
@@ -33,10 +35,9 @@
                         <%= current_user.lastname.capitalize rescue "not submitted " %>
                     </h4>
                     <div class="mt-2">
-                      <%= form_for User.new do |f| %>
+                      <%= form_for(@user, url: image_update_path, method: :put, remote: :true, id: 'changePhoto' ) do |f| %>
                         <%= f.file_field :user_image, class: 'btn btn-primary btn-sm',id: 'img',style:"display:none;" %>
                         <label for="img" class="btn btn-primary"><i class="fa fa-fw fa-camera"></i> Change photo</label>
-                      <% end %>
                     </div>
                   </div>
                   <div class="text-center text-sm-right">
@@ -81,11 +82,10 @@
                       </div>
                     </div>
                     <div class="row">
-                      
-                    
                     <div class="row">
                       <div class="col d-flex justify-content-end">
-                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                        <%= f.submit :SaveChanges, id: 'save', class: 'btn btn-primary'%>
+                        <% end %>
                       </div>
                     </div>
                   </form>
@@ -104,7 +104,6 @@
 </div>
 <% end %>
 
-<%#= stylesheet_pack_tag 'stylesheets/userprofile' %>
 
 
 

@@ -45,7 +45,9 @@
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                <% if current_user.user_image.attached? %>
                   <% if current_user.user_image.variable? %>
-                    <%= image_tag current_user.user_image.variant(resize_to_fill: [30,30]), class:'rounded-circle' %>
+                    <div id="navbarImage">
+                      <%= image_tag current_user.user_image.variant(resize_to_fill: [30,30]), class:'rounded-circle', id: 'navuserImage' %>
+                    </div>
                   <% end %>
                <% else %>
                   <%= image_tag("default.png", alt: "user", width: "30") %>

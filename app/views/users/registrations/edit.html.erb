@@ -4,7 +4,6 @@
   <h2><center>Edit <%= resource_name.to_s.humanize %></h2></center>
 
   <div class="form-group">
-    
       <% if current_user.user_image.attached? %>
         <% if current_user.user_image.variable? %>
            <%= image_tag current_user.user_image.variant(resize_to_fill: [50,50]),class:'rounded-circle' %>
