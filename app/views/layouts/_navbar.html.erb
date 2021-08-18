@@ -46,7 +46,7 @@
                <% if current_user.user_image.attached? %>
                   <% if current_user.user_image.variable? %>
                     <div id="navbarImage">
-                      <%= image_tag current_user.user_image.variant(resize_to_fill: [30,30]), class:'rounded-circle', id: 'navuserImage' %>
+                      <%= image_tag current_user.user_image, style:"height:30px; width:30px;", class:'rounded-circle', id: 'navuserImage' %>
                     </div>
                   <% end %>
                <% else %>
