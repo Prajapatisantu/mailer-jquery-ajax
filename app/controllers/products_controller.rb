@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @pagy, @products = pagy(Product.all)
+    @pagy, @products = pagy(Product.all, link_extra: 'data-remote="true"')
   end
 
   def new
