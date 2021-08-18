@@ -11,6 +11,7 @@ import "bootstrap";
 import "../stylesheets/application";
 import "packs/order_index";
 import "packs/search";
+import "packs/imageUpload";
 
 Rails.start();
 Turbolinks.start();
