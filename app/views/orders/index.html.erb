@@ -1,51 +1,51 @@
-
-<% @orders.each do |order| %>
-<div class="container mt-5 mb-5">
-    <div class="d-flex justify-content-center row">
-        <div class="col-md-10">
-            <div class="row p-2 bg-white border rounded">
-                <div class="col-md-3 mt-1">
-                    <% if order.product.product_image.attached? %>
-                        <% if order.product.product_image.variable? %>
-                             <%= image_tag order.product.product_image, class:'img-fluid img-responsive rounded product-image' %>
-                        <% end %>
-                    <% else %>
-                        <%= image_tag("default.png", alt: "user", class:'img-fluid img-responsive rounded product-image') %>
-                    <% end %>
-                </div>
-                <div class="col-md-6 mt-1">
-                    <h5><%= order.product.name %></h5>
-                    <div class="d-flex flex-row">
-                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+<% if current_user.admin? %>
+    <% @orders.each do |order| %>
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-10">
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1">
+                            <% if order.product.product_image.attached? %>
+                                <% if order.product.product_image.variable? %>
+                                    <%= image_tag order.product.product_image, class:'img-fluid img-responsive rounded product-image' %>
+                                <% end %>
+                            <% else %>
+                                <%= image_tag("default.png", alt: "user", class:'img-fluid img-responsive rounded product-image') %>
+                            <% end %>
+                        </div>
+                        <div class="col-md-6 mt-1">
+                            <h5><%= order.product.name %></h5>
+                            <div class="d-flex flex-row">
+                                <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                            </div>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Order reference ID: </strong><%= order.order_ref %>
+                            </p>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Customer: </strong><%= order.user.firstname&.capitalize %>
+                            </p>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Address of delivery: </strong><%= order.address %>
+                            </p>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Payment method: </strong><%= order.payment_type %>
+                            </p>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Total price: </strong><%= order.product.price %>
+                            </p>
+                            <p class="text-justify text-truncate para mb-0">
+                                <strong>Order date: </strong><%= order.created_at.strftime("%d %b %Y") %>
+                            </p>
+                        </div>
+                
                     </div>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Order reference ID: </strong><%= order.order_ref %>
-                     </p>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Customer: </strong><%= order.user.firstname.capitalize+''+order.user.lastname.capitalize %>
-                     </p>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Address of delivery: </strong><%= order.address %>
-                     </p>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Payment method: </strong><%= order.payment_type %>
-                     </p>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Total price: </strong><%= order.product.price %>
-                     </p>
-                     <p class="text-justify text-truncate para mb-0">
-                        <strong>Order date: </strong><%= order.created_at.strftime("%d %b %Y") %>
-                     </p>
                 </div>
-        
             </div>
         </div>
+    <% end %>
+    <div class="text-center">
+        <ul class="pagination justify-content-center">
+        <%== pagy_bootstrap_nav(@pagy) %>    
+        </ul>
     </div>
-</div>
 <% end %>
-
-<div class="text-center">
-    <ul class="pagination justify-content-center">
-       <%== pagy_bootstrap_nav(@pagy) %>    
-    </ul>
-</div>

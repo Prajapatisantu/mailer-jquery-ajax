@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'products#index'
@@ -6,7 +7,9 @@ Rails.application.routes.draw do
   post 'customers/c', to:'customers#create'
   get '/search', to:'products#search'
   put '/image_update', to: 'users#image_update'
-  # root 'orders#index'
+  # authenticate :user, lambda { |u| u.user? } do
+  mount Sidekiq::Web => '/sidekiq'
+  # end
   resources :products
   resources :orders
   resources :users

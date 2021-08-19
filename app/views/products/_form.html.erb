@@ -6,7 +6,7 @@
 <%end%>
 </div>
 <br>
-<%= form_with(model:@product, local: false, class: 'product-form') do |f| %>
+<%= form_with(model:@product, local: false, class: 'product-form',id: 'productForm') do |f| %>
      <div>
           <%= f.label :file %>
           <%= f.file_field :product_csv, autofocus: true, class:'form-control' %>
@@ -19,12 +19,12 @@
      <br>
      <div>
           <%= f.label :name %>
-          <%= f.text_field :name, class:'form-control' %>
+          <%= f.text_field :name, class:'form-control',id: 'productName' %>
      </div>
      <br />
      <div> 
           <%= f.label :price %> 
-          <%= f.text_field :price,class:'form-control' %>
+          <%= f.text_field :price,class:'form-control', id: 'productPrice' %>
      </div>
      <br />
      <div>
@@ -34,10 +34,14 @@
      <br />  
           <%= f.submit :submit,class:'btn btn-success' %>
 <% end %>
-
-
-
-
+<script>
+$("#productForm").submit(function (e) {
+     
+    console.log("bfdsbd");
+    e.preventDefault();
+    return false;
+});
+</script>
 
 
 

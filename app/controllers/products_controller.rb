@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
+  include Searching
+  load_and_authorize_resource param_method: :prod  #cancan not directly use private method specify required
 
   def index
     @pagy, @products = pagy(Product.all, link_extra: 'data-remote="true"')
@@ -10,17 +11,18 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.all
-    @search_tag = params[:search].downcase
-    @results = Product.all.where("lower(name) LIKE :search", search: @search_tag)
-    respond_to do |format|
-      format.json
-      format.js
-    end
+    search_product
+    # @products = Product.all
+    # @search_tag = params[:search].downcase
+    # @results = Product.all.where("lower(name) LIKE :search", search: @search_tag)
+    # respond_to do |format|
+    #   format.json
+    #   format.js
+    # end
   end
 
   def create
-    @product = Product.create!(prod)
+    @product = ProductCreator.prd(prod)
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_path }

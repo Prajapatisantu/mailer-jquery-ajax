@@ -1,10 +1,10 @@
 <h1>Product order information</h1>
 
 
-<h5><%= @order_information.product.name %></h5>
+<h3><center><%= @order_information.product.name %></center></h3>
    <p>
       <strong>Customer name: </strong>
-      <span><%= @order_information.user.firstname.capitalize+''+@order_information.user.lastname.capitalize %></span>
+      <span><%= @order_information.user.firstname.capitalize %></span>
    </p>
    <p>
       <strong>Order reference ID: </strong>

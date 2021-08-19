@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource param_method: :order_params
   
   def index
      @pagy, @orders = pagy(Order.all) 
@@ -13,8 +13,8 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.create(order_params)
     if @order.save
-      redirect_to root_path
       PostemailJob.perform_later(@order)
+      redirect_to root_path
       flash[:success] = "Order placed successfully"
     else
       render :new

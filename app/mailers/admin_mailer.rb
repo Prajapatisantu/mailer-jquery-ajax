@@ -1,10 +1,4 @@
 class AdminMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.admin_mailer.product_order_information.subject
-  #
   def product_order_information(order)
     @order_information = order
     mail(to: "prajapatisantu5765@gmail.com", subject: "Product order information") do |format|
