@@ -12,6 +12,9 @@ import "../stylesheets/application";
 import "packs/order_index";
 import "packs/search";
 import "packs/imageUpload";
+import "packs/form_valid";
+
+
 
 Rails.start();
 Turbolinks.start();

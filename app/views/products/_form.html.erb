@@ -29,18 +29,42 @@
      <br />
      <div>
           <%= f.label :category_id %><br>
-          <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control' %>
+          <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control', id: 'catSelect' %>
      </div>
      <br />  
           <%= f.submit :submit,class:'btn btn-success' %>
 <% end %>
 <script>
-$("#productForm").submit(function (e) {
-     
-    console.log("bfdsbd");
-    e.preventDefault();
-    return false;
-});
+
+    $("form#productForm").validate({
+        rules:{
+            'product[name]':{
+               required: true,
+               minlength: 4  
+            },
+            'product[price]':{
+               required: true
+            },
+            'product[product_image]':{
+                 required: true
+            }
+         },     
+        messages: {
+            'product[name]':{
+                required: "Name is Required",
+                minlength: "Enter at least 4 character"
+            },
+            'product[price]':{
+                required: "price is Required"
+            },
+            'product[product_image]':{
+                 required: 'File is Required'
+            }
+            
+        }
+        
+    });
+
 </script>
 
 
