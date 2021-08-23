@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(prod)
+    if @product.update!(review: params[:review])
       flash[:notice] = "Product updated successfully"
       redirect_to products_path
     end
@@ -59,6 +59,6 @@ class ProductsController < ApplicationController
   private
 
   def prod
-    params.require(:product).permit(:name, :price,:product_image, :category_id, :product_csv)
+    params.require(:product).permit(:name, :price,:product_image, :category_id, :product_csv, :review)
   end
 end

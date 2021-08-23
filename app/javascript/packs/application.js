@@ -13,7 +13,7 @@ import "packs/order_index";
 import "packs/search";
 import "packs/imageUpload";
 import "packs/form_valid";
-
+import "packs/review";
 
 
 Rails.start();
@@ -23,3 +23,6 @@ require("jquery");
 require("easy-autocomplete");
 global.toastr = require("toastr");
 console.log("jquery available");
+
+require("trix")
+require("@rails/actiontext")

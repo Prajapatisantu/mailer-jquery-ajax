@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   has_many :orders
   has_one_attached :product_image
   has_one_attached :product_csv
+  has_rich_text :review
 
   private
 

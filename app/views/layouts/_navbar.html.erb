@@ -54,7 +54,7 @@
                <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-               <% if user_signed_in? && current_user.role == "user" && current_user.role == " " %>      
+               <% if user_signed_in? && current_user.user? %>    
                  <li><%= link_to "My order",product_path(current_user),class: 'dropdown-item' %></li>
                <% end %> 
                <% if user_signed_in? && current_user.role == "admin" %>      

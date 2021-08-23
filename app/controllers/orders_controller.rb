@@ -21,11 +21,15 @@ class OrdersController < ApplicationController
       flash[:alert] = "something went wrong"
     end
   end
+
+  def show
+    @order = Order.find(params[:id])
+  end
   
   private
 
   def order_params
-    params.require(:order).permit(:payment_type,:order_ref, :user_id,:address, :product_id )
+    params.require(:order).permit(:payment_type,:order_ref, :user_id,:address, :product_id)
   end
   
 end
