@@ -5,4 +5,10 @@ class AdminMailer < ApplicationMailer
        format.html{ render "product_order_information"}
     end
   end
+
+  def product_csv_infomation(product)
+    mail(to: "santu.essence@gmail.com", subject: "product list") do |format|
+      format.html{ render "product_csv_infomation"}
+    end
+  end
 end

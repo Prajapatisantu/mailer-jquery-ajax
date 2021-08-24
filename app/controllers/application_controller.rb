@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    require 'csv'
     rescue_from CanCan::AccessDenied do |exception|
           redirect_to root_path, alert: "You dont't have permission."
     end

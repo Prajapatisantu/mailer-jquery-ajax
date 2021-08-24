@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   # authenticate :user, lambda { |u| u.user? } do
   mount Sidekiq::Web => '/sidekiq'
   # end
-  resources :products
+  get '/export', to: 'products#export'
+  resources :products 
   resources :orders
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

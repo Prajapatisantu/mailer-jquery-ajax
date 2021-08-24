@@ -4,4 +4,5 @@ class PostemailJob < ApplicationJob
   def perform(order)
     ProductHandle.call(order)
   end
+  
 end

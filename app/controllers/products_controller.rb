@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
   load_and_authorize_resource param_method: :prod  #cancan not directly use private method specify required
 
   def index
+    @productss = Product.all
     @pagy, @products = pagy(Product.all, link_extra: 'data-remote="true"')
+    respond_to do |format|
+      format.js
+      format.html
+      format.csv {send_data @productss.to_csv, filename:"productss.csv"}
+    end
   end
 
   def new
@@ -45,8 +51,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def export
+    product = Product.to_csv
+    SendCsvJob.perform_later(product)
+    redirect_to root_path
+    flash[:notice] = "Email sent successfully"
+
+  end
+
   def show
-     @product = Product.find(params[:id])
+    #  @product = Product.find(params[:id])
   end
 
   def destroy
