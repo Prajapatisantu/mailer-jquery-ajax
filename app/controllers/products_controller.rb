@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include Searching
-  load_and_authorize_resource param_method: :prod  #cancan not directly use private method specify required
+  # load_and_authorize_resource param_method: :prod  #cancan not directly use private method specify required
 
   def index
     @productss = Product.all

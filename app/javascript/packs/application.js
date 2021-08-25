@@ -12,7 +12,6 @@ import "../stylesheets/application";
 import "packs/order_index";
 import "packs/search";
 import "packs/imageUpload";
-import "packs/form_valid";
 import "packs/review";
 
 

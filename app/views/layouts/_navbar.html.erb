@@ -11,7 +11,7 @@
   </div>
 </div>
 <!-- navbar setup -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="hideNav">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
       <i class="fas fa-bars"></i>
@@ -25,11 +25,6 @@
           <li class="nav-item">
              <% if user_signed_in? && current_user.role == "admin" %> 
                <%= link_to "Add product",new_product_path,remote: true,class: 'nav-link' %>
-             <% end %> 
-          </li>
-          <li class="nav-item">
-             <% if user_signed_in? %>
-               <%#= link_to " Add order",new_order_path,remote: true,class: 'nav-link' %>
              <% end %> 
           </li>
           <li class="nav-item">
@@ -66,8 +61,8 @@
             </ul>
           </div>
       <% else %>
-              <%= link_to "Sign up",new_user_registration_path,class: 'nav-link' %>
-              <%= link_to "Sign In",new_user_session_path,class: 'nav-link' %>
+        <%= link_to "Sign up",new_user_registration_path,class: 'nav-link' %>
+        <%= link_to "Sign In",new_user_session_path,class: 'nav-link' %>
       <% end %>
     </div>
   </div>

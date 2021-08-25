@@ -8,3 +8,4 @@
 Category.create(category_name:"fashion")
 Category.create(category_name:"offer sale")
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
