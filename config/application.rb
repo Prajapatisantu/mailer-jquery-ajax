@@ -10,6 +10,8 @@ module Sales
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    # Rails.application.config.action_controller.forgery_protection_origin_check = false
+    # config.action_controller.allow_forgery_protection = false
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -18,5 +20,5 @@ module Sales
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-  end
+  end  
 end

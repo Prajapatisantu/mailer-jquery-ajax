@@ -1,0 +1,18 @@
+<br>
+<center>
+    <h5>Click on button to pay via Paytm </h5><br/>
+    <h4>Please do not refresh this page...</h4>
+    <%= form_with(url: Rails.application.credentials.send("paytm")[:transaction_url], method: :post) do |f| %>
+        <% keys = @paramList.keys %>
+        <% keys.each do |k| %>
+          <%= f.hidden_field "#{k}", value: @paramList[k] %>
+        <% end %>
+        <%= hidden_field_tag "CHECKSUMHASH", @checksum_hash %>
+        <%= hidden_field_tag "product_id", @product.id %>
+       <div>
+          <%= f.hidden_field "user_id", value: current_user.id %>
+          <%= f.submit "PROCEED TO PAYMENT", class: 'btn btn-primary' %>
+       </div>
+    <% end %>
+</center>
+    

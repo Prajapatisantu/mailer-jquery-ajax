@@ -1,5 +1,5 @@
 <div class="registration-form">
-    <%= form_with(model:@order, id: 'orderForm') do |f| %>
+    <%= form_with(url: start_payment_path(product_id: @product.id), method: :post, id: 'orderForm') do |f| %>
         <h5><center>Address details</center></h5>
         <%= f.hidden_field :product_id, value: @product.id %> 
         <div class="form-group">
@@ -16,11 +16,6 @@
             <strong><%= f.label :price %></strong> 
             <%= f.text_field :price, class:'form-control' ,value: '$'+@product.price.to_s, disabled: true if current_user.user? %>
         <div>
-        <br>
-        <div class="form-group">
-            <strong><%= f.label :payment_type %></strong>
-            <%= f.text_field :payment_type, class:'form-control' ,value: 'cash on delivery', readonly: true %>
-        </div>
         <br>
             <%= f.submit :submit,class:'btn btn-success' %>
     <% end %>

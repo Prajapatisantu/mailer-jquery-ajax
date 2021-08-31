@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @product = Product.find(params[:product_id])
+    @order_id = Order.new
   end
 
   def create
@@ -31,5 +32,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_type,:order_ref, :user_id,:address, :product_id)
   end
-  
+
 end
