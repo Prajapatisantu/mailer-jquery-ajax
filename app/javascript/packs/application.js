@@ -13,6 +13,7 @@ import "packs/order_index";
 import "packs/search";
 import "packs/imageUpload";
 import "packs/review";
+import "packs/datatable";
 
 
 Rails.start();

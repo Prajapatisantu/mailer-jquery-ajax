@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require dataTables/jquery.dataTables

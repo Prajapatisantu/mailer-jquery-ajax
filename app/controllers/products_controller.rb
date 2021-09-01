@@ -51,6 +51,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def import
+    
+  end
+
   def export
     product = Product.to_csv
     SendCsvJob.perform_later(product)
@@ -60,7 +64,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #  @product = Product.find(params[:id])
+    #  @product = Product.friendly.find(params[:id])
   end
 
   def destroy

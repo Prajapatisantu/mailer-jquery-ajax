@@ -31,7 +31,7 @@
           <%= f.label :category_id %><br>
           <%= f.select :category_id,(Category.all.map{|e| [e.category_name, e.id]}),class:'form-control', id: 'catSelect' %>
      </div>
-     <br />  
+     <br>
           <%= f.submit :submit,class:'btn btn-success' %>
 <% end %>
 <script>

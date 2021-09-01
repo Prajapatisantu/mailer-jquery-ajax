@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
   # after_create :simple
   belongs_to :category
   validates :price, presence: true

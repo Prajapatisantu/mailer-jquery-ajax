@@ -1,0 +1,25 @@
+.table-head {
+  background-color: #f2aa4cff;
+  margin-top: 5px;
+}
+#example {
+  padding-top: 10px;
+}
+.table-responsive {
+  #example_paginate {
+    .paginate_button {
+      background-color: #0d6efd;
+      color: white !important;
+    }
+    .paginate_button.current {
+      color: black !important;
+    }
+    #example_previous {
+      background-color: #0d6efd;
+      color: white !important;
+    }
+    #example_next {
+      color: white !important;
+    }
+  }
+}

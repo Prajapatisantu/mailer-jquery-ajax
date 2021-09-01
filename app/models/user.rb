@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :email
   require 'open-uri'      # for open external url like twiiter,google
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
