@@ -30,4 +30,10 @@ class Product < ApplicationRecord
     end
   end
 
+  def self.my_import(file)
+    products = []
+    CSV.foreach(file, headers: true) do |row|
+      products << Product.create!(row.to_h)
+    end
+  end
 end

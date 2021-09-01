@@ -67,6 +67,8 @@ GEM
     activerecord (6.1.4)
       activemodel (= 6.1.4)
       activesupport (= 6.1.4)
+    activerecord-import (0.15.0)
+      activerecord (>= 3.2)
     activerecord-session_store (2.0.0)
       actionpack (>= 5.2.4.1)
       activerecord (>= 5.2.4.1)
@@ -404,6 +406,7 @@ PLATFORMS
 DEPENDENCIES
   active_admin_theme
   activeadmin
+  activerecord-import (~> 0.15.0)
   activerecord-session_store
   activestorage-dropbox
   bootsnap (>= 1.4.4)

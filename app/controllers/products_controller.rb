@@ -52,7 +52,9 @@ class ProductsController < ApplicationController
   end
 
   def import
-    
+    Product.my_import(params[:file])
+    redirect_to import_products_path
+    flash[:notice] = "product imported successfully"
   end
 
   def export

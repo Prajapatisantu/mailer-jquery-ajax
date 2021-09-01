@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   # end
   get '/export', to: 'products#export'
-  get '/import', to: 'products#import'
-  resources :products 
+  # get '/import', to: 'products#import'
+  resources :products do
+    collection {post :import}
+  end
   resources :orders
   resources :users
 end

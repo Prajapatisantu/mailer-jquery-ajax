@@ -13,10 +13,12 @@
   </div>
   <%= render 'datatable' %>
 
-
-
-
-
+<div class="container">
+    <%= form_with(url: import_products_path, method: :post) do |f| %>
+        <%= f.file_field :file, class: 'form-control' %><br>
+        <%= submit_tag "Import data", class: 'btn btn-warning' %>
+    <% end %>
+<div>
 
 
 
