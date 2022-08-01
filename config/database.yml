@@ -24,9 +24,9 @@ default: &default
 development:
   <<: *default
   database: sales_development_b
-  username: "postgres"
-  host: "localhost"
-  port: "5432"
+  username: postgres
+  host: db
+  port: 5432
   password: postgres
 
   # The specified database role being used to connect to postgres.

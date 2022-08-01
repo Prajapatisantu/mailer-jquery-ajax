@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DATABASE: sales_development_b
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - .:/mailer-jquery-ajax
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+
+  redis:
+    image: "redis:alpine"
+    command: redis-server --save 60 1 --requirepass MDNcVb924a
+    ports:
+     - "6379:6379"
+    volumes:
+     - redis_data:/data
+
+volumes:
+  postgres:
+  redis_data:
