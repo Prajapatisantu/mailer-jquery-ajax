@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  port: 5432
 
 development:
   <<: *default
   database: sales_development_b
   username: postgres
-  host: db
-  port: 5432
   password: postgres
 
   # The specified database role being used to connect to postgres.
@@ -82,8 +82,8 @@ development:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-# production:
-#   <<: *default
-#   database: sales_production
-#   username: sales
-#   password: <%= ENV['SALES_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: sales_production
+  username: postgres
+  password: postgres
